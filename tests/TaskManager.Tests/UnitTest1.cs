@@ -22,5 +22,18 @@ namespace TaskManager.Tests
             Assert.Equal("Teste", tarefas[0].Descricao);
         }
 
+
+        [Fact]
+        public void EditarTarefa_DeveAtualizarDescricaoDaTarefa()
+        {
+            _taskService.AdicionarTarefa("Original");
+            var tarefa = _taskService.ListarTarefas()[0];
+
+            _taskService.EditarTarefa(tarefa.Id, "Editada");
+
+            Assert.Equal("Editada", _taskService.ListarTarefas()[0].Descricao);
+        }
+
+
     }
 }
