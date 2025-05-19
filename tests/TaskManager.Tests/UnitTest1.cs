@@ -33,6 +33,18 @@ namespace TaskManager.Tests
 
             Assert.Equal("Editada", _taskService.ListarTarefas()[0].Descricao);
         }
+        
+
+        [Fact]
+        public void ListarTarefas_DeveRetornarTodasAsTarefas()
+        {
+            _taskService.AdicionarTarefa("Tarefa 1");
+            _taskService.AdicionarTarefa("Tarefa 2");
+
+            var tarefas = _taskService.ListarTarefas();
+
+            Assert.Equal(2, tarefas.Count);
+        }
 
 
     }
