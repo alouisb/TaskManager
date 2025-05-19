@@ -22,6 +22,16 @@ namespace TaskManager.Tests
             Assert.Equal("Teste", tarefas[0].Descricao);
         }
 
+        [Fact]
+        public void ExcluirTarefa_DeveRemoverTarefaComIdInformado()
+        {
+            _taskService.AdicionarTarefa("Teste");
+            var tarefa = _taskService.ListarTarefas()[0];
+
+            _taskService.ExcluirTarefa(tarefa.Id);
+
+            Assert.Empty(_taskService.ListarTarefas());
+        }
 
         [Fact]
         public void EditarTarefa_DeveAtualizarDescricaoDaTarefa()
