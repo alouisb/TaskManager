@@ -8,7 +8,7 @@ namespace TaskManager
     {
         static void Main(string[] args)
         {
-            var taskService = new TaskService();
+            var taskService = new TaskService(); // Instancia o serviço que gerencia as tarefas
             bool continuar = true;
 
             while (continuar)
@@ -31,13 +31,13 @@ namespace TaskManager
                     case '1':
                         Console.Write("Informe a descrição da tarefa: ");
                         string descricao = Console.ReadLine();
-                        taskService.AdicionarTarefa(descricao);
+                        taskService.AdicionarTarefa(descricao); // Adiciona uma nova tarefa
                         break;
 
                     case '2':
                         Console.Write("Informe o ID da tarefa a excluir: ");
                         int excluirId = int.Parse(Console.ReadLine());
-                        taskService.ExcluirTarefa(excluirId);
+                        taskService.ExcluirTarefa(excluirId); // Exclui a tarefa pelo ID
                         break;
 
                     case '3':
@@ -45,24 +45,24 @@ namespace TaskManager
                         int editarId = int.Parse(Console.ReadLine());
                         Console.Write("Informe a nova descrição: ");
                         string novaDescricao = Console.ReadLine();
-                        taskService.EditarTarefa(editarId, novaDescricao);
+                        taskService.EditarTarefa(editarId, novaDescricao); // Edita a tarefa com novo texto
                         break;
 
                     case '4':
-                        var tarefas = taskService.ListarTarefas();
+                        var tarefas = taskService.ListarTarefas(); // Recupera lista de tarefas
                         Console.WriteLine("TAREFAS:");
                         foreach (var tarefa in tarefas)
                         {
-                            Console.WriteLine($"ID: {tarefa.Id} | Descrição: {tarefa.Descricao}");
+                            Console.WriteLine($"ID: {tarefa.Id} | Descrição: {tarefa.Descricao}"); // Exibe cada tarefa
                         }
                         break;
 
                     case '5':
-                        continuar = false;
+                        continuar = false; // Encerra o loop e o programa
                         break;
 
                     default:
-                        Console.WriteLine("Opção inválida!");
+                        Console.WriteLine("Opção inválida!"); // Validação de entrada inválida
                         break;
                 }
 
@@ -73,7 +73,7 @@ namespace TaskManager
                 }
             }
 
-            Console.WriteLine("Programa encerrado.");
+            Console.WriteLine("Programa encerrado."); // Mensagem final
         }
     }
 }
